@@ -6,10 +6,10 @@ public class Start {
 
         Semaphore gate = new Semaphore(2, true);
         Semaphore capacity = new Semaphore(500, true);
-        Semaphore cashier = new Semaphore(3, true);
+        Semaphore exit = new Semaphore(1, true);
 
-        for (int customerCount = 5; customerCount > 0; customerCount--) {
-            MyThread t = new MyThread(cashier, capacity, gate, Integer.toString(customerCount));
+        for (int customerCount = 1; customerCount <=10; customerCount++) {
+            Customer t = new Customer(exit, capacity, gate, Integer.toString(customerCount));
             t.start();
         }
     }
